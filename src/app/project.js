@@ -1,10 +1,8 @@
 export class Project {
-    constructor(title, todos) {
+    constructor(title) {
         this.title = title;
-        this.todos = todos;
+        this.todos = [];
     }
 
-    sayHi = () => { // Temporary function to test if webpack/object works
-        console.log(`Hi Project: ${this.title}! Todos in this project: ${JSON.stringify(this.todos)}`);
-    }
+    addTodoToProject = (todo) => this.todos.push(todo);
 }
