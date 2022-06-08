@@ -9,10 +9,41 @@
   <body>
     <div id="grid-container">
       <nav>
-          <ul id="projects-content">
-          </ul>
+        <ul id="projects-content">
+        </ul>
       </nav>
-      <div id="todos-content">
+      <main id="main">
+        <div id="todos-content"></div>
+        <form id="form">
+          <h3 id="form-title">Create New Todo</h3>
+          <div id="form-content">
+            <div class="form-group">
+              <label for="title">Title:</label><br />
+              <input type="text" id="title" name="title">
+            </div>
+            <div class="form-group">
+              <label for="description">Description:</label><br />
+              <input type="text" id="description" name="description">
+            </div>
+            <div class="form-group">
+              <label for="due-date">Due Date:</label><br />
+              <input type="date" id="due-date" name="due-date">
+            </div>
+            <div class="form-group">
+              <legend>Priority:</legend>
+              <input type="radio" id="low" name="priority-level" value="low" checked>
+              <label for="low">Low</label><br>
+              <input type="radio" id="high" name="priority-level" value="high">
+              <label for="high">High</label><br> 
+            </div>
+            <div class="form-group">
+              <label for="notes">Notes:</label><br />
+              <textarea id="notes" name="notes"></textarea> 
+            </div>
+          </div>
+          <input id="submit" type="submit" value="Submit">
+        </form>
+      </main>
       </div>
     </div>
   </body>

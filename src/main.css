@@ -5,7 +5,7 @@ html, body {
 
 #grid-container {
     display: inline-grid;
-    grid-template-columns: minmax(175px, 10%) 30% 30% 30%;
+    grid-template-columns: 150px 30% 30% 30%;
     grid-template-rows: auto;
     grid-template-areas: 
         "navigation content content content"
@@ -23,8 +23,77 @@ nav {
     width: 100%;
 }
 
-#todos-content {
+li {
+    list-style: none;
+}
+
+main {
     grid-area: content;
     background: #222930;
+    text-align: center;
+}
+
+#todos-content {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+#form {
+    background: white;
+    width: 50%;
+    margin: 15px auto;
+    border-radius: 10px;
+    padding: 15px 0;
+}
+
+#form-content {
+    display: grid;
+    grid-template-columns: 50% 50%;
+    grid-template-rows: auto;
+}
+
+.form-group {
+    margin: 15px;
+}
+
+.form-group:last-child {
+    grid-column: span 2;
+}
+
+#submit {
+    background: blue;
     color: #FFF;
+    font-weight: bold;
+    border-radius: 10px;
+    height: 50px;
+    width: 125px;
+}
+
+textarea {
+    width: 300px;
+    height: 125px;
+}
+
+.card {
+    background: #FFF;
+    border-radius: 10px;
+    flex: 1;
+    height: 150px;
+    min-width: 300px;
+}
+
+@media only screen and (max-width: 800px) {
+    #form-content {
+        grid-template-columns: 100%;
+    }
+
+    .form-group:last-child {
+        grid-column: span 1;
+    }
+
+    textarea {
+        width: 130px;
+        height: 55px;
+    }
 }

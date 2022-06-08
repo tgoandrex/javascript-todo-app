@@ -3,6 +3,4 @@ export class Project {
         this.title = title;
         this.todos = [];
     }
-
-    addTodoToProject = (todo) => this.todos.push(todo);
 }
