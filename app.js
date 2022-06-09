@@ -13,7 +13,6 @@ document.getElementById("form").addEventListener("submit", function(e) {
     data.notes = document.getElementById("notes").value;
 
     const radioButtons = document.getElementsByName('priority-level');
-
     for(let i = 0; i < radioButtons.length; i++) {
         if(radioButtons[i].checked)
             data.priority = radioButtons[i].value;

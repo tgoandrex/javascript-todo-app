@@ -18,16 +18,16 @@
           <h3 id="form-title">Create New Todo</h3>
           <div id="form-content">
             <div class="form-group">
-              <label for="title">Title:</label><br />
-              <input type="text" id="title" name="title">
+              <label for="title">Title (Required):</label><br />
+              <input type="text" id="title" name="title" minlength="3" maxlength="15" required>
             </div>
             <div class="form-group">
               <label for="description">Description:</label><br />
-              <input type="text" id="description" name="description">
+              <input type="text" id="description" name="description" maxlength="25">
             </div>
             <div class="form-group">
-              <label for="due-date">Due Date:</label><br />
-              <input type="date" id="due-date" name="due-date">
+              <label for="due-date">Due Date (Required):</label><br />
+              <input type="date" id="due-date" name="due-date" required>
             </div>
             <div class="form-group">
               <legend>Priority:</legend>
@@ -38,7 +38,7 @@
             </div>
             <div class="form-group">
               <label for="notes">Notes:</label><br />
-              <textarea id="notes" name="notes"></textarea> 
+              <textarea id="notes" name="notes" maxlength="125"></textarea> 
             </div>
           </div>
           <input id="submit" type="submit" value="Submit">

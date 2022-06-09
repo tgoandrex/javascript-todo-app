@@ -37,6 +37,8 @@ main {
     display: flex;
     flex-wrap: wrap;
     gap: 10px;
+    margin: 15px auto 0 auto;
+    width: 95%;
 }
 
 #form {
@@ -99,7 +101,15 @@ textarea {
     grid-column: span 2;
 }
 
+.green {
+    background: lightgreen;
+}
+
 @media only screen and (max-width: 800px) {
+    #form {
+        width: 75%;
+    }
+    
     #form-content {
         grid-template-columns: 100%;
     }
