@@ -15,16 +15,25 @@ export class DOM {
             card.className = "card";
             tContent.appendChild(card);
 
-            const h3 = document.createElement("h3");
-            h3.textContent = todo.title;
-            card.appendChild(h3);
+            const div = document.createElement("div");
+            div.textContent = todo.title;
+            div.className = "todo-title";
+            card.appendChild(div);
             
-            const values = ["description", "dueDate", "priority", "completed", "notes"];
-            values.forEach(function(value) {
+            const values = {
+                "Description": todo.description,
+                "Due Date": todo.dueDate,
+                "Priority": todo.priority,
+                "Completed?": todo.completed,
+                "Notes": todo.notes
+            }
+
+            for(let key in values) {
                 const div = document.createElement("div");
-                div.textContent = todo[value];
+                div.textContent = `${key}: ${values[key]}`;
                 card.appendChild(div);
-            });
+            }
+
         });
     }
 }

@@ -1,4 +1,3 @@
-import { title, description, dueDate, priorityLevel, notes } from "./src/app/utils/domElements";
 import { Todo } from "./src/app/todo";
 import { DOM } from "./src/app/dom";
 import { Project } from "./src/app/project";
@@ -7,12 +6,18 @@ document.getElementById("form").addEventListener("submit", function(e) {
     e.preventDefault();
     let data = new FormData();
 
-    data.title = title.value;
-    data.description = description.value;
-    data.dueDate = dueDate.value;
-    data.priorityLevel = priorityLevel.value; // This is not getting the value right now
+    data.title = document.getElementById("title").value;
+    data.description = document.getElementById("description").value;
+    data.dueDate = document.getElementById("due-date").value;
     data.completed = false;
-    data.notes = notes.value;
+    data.notes = document.getElementById("notes").value;
+
+    const radioButtons = document.getElementsByName('priority-level');
+
+    for(let i = 0; i < radioButtons.length; i++) {
+        if(radioButtons[i].checked)
+            data.priority = radioButtons[i].value;
+    }
 
     const project = JSON.parse(localStorage.getItem("selected-project"));
     project.todos.push(Todo.createNewTodo(data));
