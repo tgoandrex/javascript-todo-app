@@ -19,4 +19,12 @@ export class Todo {
     static setComplete = (todo) => {
         todo.completed = true;
     }
+
+    static deleteTodo = (project, todo) => { // Still figuring this out...
+        console.log(project);
+        console.log(todo);
+        // project.todos.find(function() {return todo.title}); ???
+        // project.todos.splice(project[todo]); ???
+        // array.splice(index, howmany) index is required, howmany optional
+    }
 }

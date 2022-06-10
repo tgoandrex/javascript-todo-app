@@ -43,6 +43,15 @@ export class DOM {
                 });
                 div.appendChild(completedButton);    
             }
+
+            const deleteButton = document.createElement("button");
+            deleteButton.textContent = "Delete";
+            deleteButton.addEventListener("click", function() {
+                Todo.deleteTodo(project, todo);
+                localStorage.setItem("selected-project", JSON.stringify(project));
+                DOM.buildProjectContent(project); 
+            });
+            div.appendChild(deleteButton);    
             
             const values = {
                 "Description": todo.description,
@@ -51,7 +60,6 @@ export class DOM {
                 "Completed?": todo.completed,
                 "Notes": todo.notes
             }
-
             for(let key in values) {
                 const div = document.createElement("div");
                 div.textContent = `${key}: ${values[key]}`;
