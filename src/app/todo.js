@@ -20,11 +20,11 @@ export class Todo {
         todo.completed = true;
     }
 
-    static deleteTodo = (project, todo) => { // Still figuring this out...
-        console.log(project);
-        console.log(todo);
-        // project.todos.find(function() {return todo.title}); ???
-        // project.todos.splice(project[todo]); ???
-        // array.splice(index, howmany) index is required, howmany optional
+    static deleteTodo = (project, todo) => {
+        for(let x = 0; x < project.todos.length; x++) {
+            if(project.todos[x].title === todo.title) {
+                project.todos.splice(project.todos.indexOf(project.todos[x]), 1);
+            }
+        }
     }
 }
