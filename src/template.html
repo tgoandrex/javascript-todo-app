@@ -9,12 +9,17 @@
   <body>
     <div id="grid-container">
       <nav>
-        <ul id="projects-content">
-        </ul>
+        <ul id="projects-content"></ul>
+        <form id="project-form">
+          <h3>Create New Project</h3>
+          <label for="project-title">Title (Required):</label><br />
+          <input type="text" id="project-title" name="project-title" minlength="3" maxlength="15" required>
+          <input type="submit" value="Submit">
+        </form>
       </nav>
       <main id="main">
         <div id="todos-content"></div>
-        <form id="form">
+        <form id="todo-form">
           <h3 id="form-title">Create New Todo</h3>
           <div id="form-content">
             <div class="form-group">

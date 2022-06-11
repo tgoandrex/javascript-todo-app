@@ -20,10 +20,10 @@ export class Todo {
         todo.completed = true;
     }
 
-    static deleteTodo = (project, todo) => {
-        for(let x = 0; x < project.todos.length; x++) {
-            if(project.todos[x].title === todo.title) {
-                project.todos.splice(project.todos.indexOf(project.todos[x]), 1);
+    static deleteTodo = (todos, todo) => {
+        for(let x = 0; x < todos.length; x++) {
+            if(todos[x].title === todo.title) {
+                todos.splice(todos.indexOf(todos[x]), 1);
             }
         }
     }

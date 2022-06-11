@@ -4,9 +4,9 @@ const removeAllChildNodes = (parent) => {
     }
 }
 
-const checkTitleIsUnique = (title, todos) => {
-    for (let i = 0; i < todos.length; i++) {
-        if(title === todos[i].title) {
+const checkTitleIsUnique = (title, arr) => {
+    for (let i = 0; i < arr.length; i++) {
+        if(title === arr[i].title) {
             return false;
         }
     }

@@ -3,13 +3,27 @@ import { pContent, tContent } from "./utils/domElements";
 import { removeAllChildNodes } from "./utils/functions";
 
 export class DOM {
-    static buildProjectContent = (project) => {
+    static buildProjectContent = (projects) => {
         removeAllChildNodes(pContent);
-        removeAllChildNodes(tContent);
 
-        const listItem = document.createElement("li");
-        listItem.textContent = project.title;
-        pContent.appendChild(listItem);
+        projects.forEach(function(project) {
+            if(project.title !== "selected-project") {
+                const listItem = document.createElement("li");
+                listItem.id = project.title;
+                listItem.textContent = project.title;
+                listItem.addEventListener("click", function() {
+                    localStorage.setItem(project.title, JSON.stringify(project));
+                    localStorage.setItem("selected-project", JSON.stringify(project));
+                    DOM.buildProjectContent(projects);
+                    DOM.buildTodoContent(project);
+                });
+                pContent.appendChild(listItem);
+            }
+        });
+    }
+
+    static buildTodoContent = (project) => {
+        removeAllChildNodes(tContent);
         
         project.todos.forEach(function(todo) {
             const card = document.createElement("div");
@@ -29,8 +43,9 @@ export class DOM {
                 priorityButton.textContent = "Change priority";
                 priorityButton.addEventListener("click", function() {
                     Todo.changePriority(todo);
+                    localStorage.setItem(project.title, JSON.stringify(project));
                     localStorage.setItem("selected-project", JSON.stringify(project));
-                    DOM.buildProjectContent(project);
+                    DOM.buildTodoContent(project);
                 });
                 div.appendChild(priorityButton);
 
@@ -38,8 +53,9 @@ export class DOM {
                 completedButton.textContent = "Mark complete";
                 completedButton.addEventListener("click", function() {
                     Todo.setComplete(todo);
+                    localStorage.setItem(project.title, JSON.stringify(project));
                     localStorage.setItem("selected-project", JSON.stringify(project));
-                    DOM.buildProjectContent(project); 
+                    DOM.buildTodoContent(project); 
                 });
                 div.appendChild(completedButton);    
             }
@@ -47,9 +63,10 @@ export class DOM {
             const deleteButton = document.createElement("button");
             deleteButton.textContent = "Delete";
             deleteButton.addEventListener("click", function() {
-                Todo.deleteTodo(project, todo);
+                Todo.deleteTodo(project.todos, todo);
+                localStorage.setItem(project.title, JSON.stringify(project));
                 localStorage.setItem("selected-project", JSON.stringify(project));
-                DOM.buildProjectContent(project); 
+                DOM.buildTodoContent(project); 
             });
             div.appendChild(deleteButton);    
             

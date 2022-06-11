@@ -21,10 +21,16 @@ nav {
     background: #4EB1BA;
     height: 100%;
     width: 100%;
+    text-align: center;
+}
+
+ul {
+    padding: 0;
 }
 
 li {
     list-style: none;
+    font-size: 1.25em;
 }
 
 main {
@@ -41,7 +47,7 @@ main {
     width: 95%;
 }
 
-#form {
+#todo-form {
     background: white;
     width: 50%;
     margin: 15px auto;
@@ -103,6 +109,10 @@ textarea {
 
 .green {
     background: lightgreen;
+}
+
+button {
+    margin: 0 5px;
 }
 
 @media only screen and (max-width: 800px) {
