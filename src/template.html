@@ -12,9 +12,11 @@
         <ul id="projects-content"></ul>
         <form id="project-form">
           <h3>Create New Project</h3>
-          <label for="project-title">Title (Required):</label><br />
-          <input type="text" id="project-title" name="project-title" minlength="3" maxlength="15" required>
-          <input type="submit" value="Submit">
+          <div class="form-group">
+            <label for="project-title">Title (Required):</label><br />
+            <input type="text" id="project-title" name="project-title" minlength="3" maxlength="15" required>
+          </div>
+          <input class="submit" type="submit" value="Submit">
         </form>
       </nav>
       <main id="main">
@@ -46,7 +48,7 @@
               <textarea id="notes" name="notes" maxlength="125"></textarea> 
             </div>
           </div>
-          <input id="submit" type="submit" value="Submit">
+          <input class="submit" type="submit" value="Submit">
         </form>
       </main>
       </div>

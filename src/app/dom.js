@@ -1,3 +1,4 @@
+import { Project } from "./project";
 import { Todo } from "./todo";
 import { pContent, tContent } from "./utils/domElements";
 import { removeAllChildNodes } from "./utils/functions";
@@ -7,17 +8,38 @@ export class DOM {
         removeAllChildNodes(pContent);
 
         projects.forEach(function(project) {
-            if(project.title !== "selected-project") {
-                const listItem = document.createElement("li");
-                listItem.id = project.title;
-                listItem.textContent = project.title;
-                listItem.addEventListener("click", function() {
-                    localStorage.setItem(project.title, JSON.stringify(project));
-                    localStorage.setItem("selected-project", JSON.stringify(project));
-                    DOM.buildProjectContent(projects);
-                    DOM.buildTodoContent(project);
+            const listItem = document.createElement("li");
+            listItem.id = project.title;
+            listItem.textContent = 
+                JSON.parse(localStorage.getItem("selected-project")).title === project.title ? 
+                `${project.title} (Selected)`: project.title;
+            
+            listItem.addEventListener("click", function() {
+                localStorage.setItem(project.title, JSON.stringify(project));
+                localStorage.setItem("selected-project", JSON.stringify(project));
+                DOM.buildProjectContent(projects);
+                DOM.buildTodoContent(project);
+            });
+
+            pContent.appendChild(listItem);
+
+            if(project.title !== "Default") {
+                const deleteButton = document.createElement("button");
+                deleteButton.id = "project-delete-button";
+                deleteButton.textContent = "Delete";
+                deleteButton.addEventListener("click", function() {
+                    const response = prompt(`Deleting project: ${project.title}! Are you sure? Type 'Yes' if so.`);
+
+                    if(response === "Yes") {
+                        Project.deleteProject(projects, project);
+                        localStorage.removeItem(project.title);
+                        project = JSON.parse(localStorage.getItem("Default"));
+                        localStorage.setItem("selected-project", project);
+                        DOM.buildProjectContent(projects);
+                        DOM.buildTodoContent(project);
+                    }
                 });
-                pContent.appendChild(listItem);
+                listItem.appendChild(deleteButton);
             }
         });
     }
@@ -63,18 +85,22 @@ export class DOM {
             const deleteButton = document.createElement("button");
             deleteButton.textContent = "Delete";
             deleteButton.addEventListener("click", function() {
-                Todo.deleteTodo(project.todos, todo);
-                localStorage.setItem(project.title, JSON.stringify(project));
-                localStorage.setItem("selected-project", JSON.stringify(project));
-                DOM.buildTodoContent(project); 
+                const response = prompt(`Deleting todo: ${todo.title}! Are you sure? Type 'Yes' if so.`);
+
+                if(response === "Yes") {
+                    Todo.deleteTodo(project.todos, todo);
+                    localStorage.setItem(project.title, JSON.stringify(project));
+                    localStorage.setItem("selected-project", JSON.stringify(project));
+                    DOM.buildTodoContent(project);
+                }
             });
-            div.appendChild(deleteButton);    
+            div.appendChild(deleteButton);
             
             const values = {
                 "Description": todo.description,
                 "Due Date": todo.dueDate,
                 "Priority": todo.priority,
-                "Completed?": todo.completed,
+                "Completed?": todo.completed === true ? "Yes": "No",
                 "Notes": todo.notes
             }
             for(let key in values) {
