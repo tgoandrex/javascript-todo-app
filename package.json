@@ -2,7 +2,7 @@
   "name": "javascript-todo-app",
   "version": "1.0.0",
   "description": "A Javascript app using webpack, objects, and localstorage",
-  "main": "index.js",
+  "main": "./app/index.js",
   "scripts": {
     "start": "webpack --config webpack.config.js"
   },
