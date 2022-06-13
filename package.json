@@ -4,7 +4,8 @@
   "description": "A Javascript app using webpack, objects, and localstorage",
   "main": "index.js",
   "scripts": {
-    "start": "webpack --config webpack.config.js"
+    "start": "webpack --config webpack.config.js",
+    "build": "webpack --mode production --config ./webpack.config.js"
   },
   "repository": {
     "type": "git",
