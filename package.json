@@ -1,6 +1,9 @@
 {
   "name": "javascript-todo-app",
   "version": "1.0.0",
+  "engines": {
+    "node": "16.x"
+  },
   "description": "A Javascript app using webpack, objects, and localstorage",
   "main": "index.js",
   "scripts": {
