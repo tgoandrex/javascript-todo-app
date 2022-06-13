@@ -49,7 +49,13 @@ export class DOM {
         
         project.todos.forEach(function(todo) {
             const card = document.createElement("div");
-            todo.completed === true ? card.className = "card green" : card.className = "card";
+            if(todo.completed === true) {
+                card.className = "card green";
+            } else if(new Date(todo.dueDate).getTime() < Date.now()) {
+                card.className = "card red";
+            } else {
+                card.className = "card";
+            }
             tContent.appendChild(card);
 
             const div = document.createElement("div");
@@ -98,7 +104,7 @@ export class DOM {
             
             const values = {
                 "Description": todo.description,
-                "Due Date": todo.dueDate,
+                "Due Date": String(new Date(todo.dueDate)).substring(0, 15),
                 "Priority": todo.priority,
                 "Completed?": todo.completed === true ? "Yes": "No",
                 "Notes": todo.notes

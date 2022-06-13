@@ -118,6 +118,10 @@ textarea {
     background: lightgreen;
 }
 
+.red {
+    background: crimson;
+}
+
 button {
     margin: 0 5px;
 }
