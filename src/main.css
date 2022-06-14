@@ -132,7 +132,7 @@ button {
 }
 
 @media only screen and (max-width: 800px) {
-    #form, input {
+    #todo-form, input {
         width: 75%;
     }
     
