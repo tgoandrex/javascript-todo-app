@@ -11,3 +11,5 @@ Javascript Todo Application
 -Individual todos can be deleted, as well as the entire project. A warning prompt will ensure any deletion isn't accidental.
 
 -The project currently active in is shown in the navigation as '(Selected)'.
+
+Working demo: https://spontaneous-sawine-8e2387.netlify.app/
